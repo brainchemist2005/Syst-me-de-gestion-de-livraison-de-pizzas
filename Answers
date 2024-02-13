@@ -1,0 +1,42 @@
+Question 1:
+
+1. Prise de Commande Téléphonique
+Acteur(s) : Préposé aux commandes, Client
+Description : Le système reçoit un appel, identifie le numéro de téléphone et affiche les informations du client. Le préposé modifie les informations si nécessaire et prend la commande.
+Préconditions : Appel téléphonique reçu, numéro de téléphone identifié par le système.
+Postconditions : Commande enregistrée, informations client mises à jour, facture envoyée en cuisine.
+2. Prise de Commande Internet
+Acteur(s) : Client, Préposé aux commandes
+Description : Un client avec un dossier existant passe une commande en ligne. Le système calcule le coût et affiche la commande au préposé, qui confirme la commande par téléphone.
+Préconditions : Client identifié avec un dossier existant.
+Postconditions : Commande confirmée et envoyée en cuisine.
+3. Création de Nouveau Dossier Client
+Acteur(s) : Nouveau client, Préposé aux commandes
+Description : Pour les nouveaux clients, soit au téléphone, soit en ligne, un dossier client est créé.
+Préconditions : Nouveau client identifié.
+Postconditions : Nouveau dossier client créé, commande prise.
+4. Prise de Commande au Comptoir
+Acteur(s) : Client, Préposé aux commandes
+Description : Les clients viennent directement au comptoir pour passer commande. Pas besoin de créer un dossier client.
+Préconditions : Client présent au comptoir.
+Postconditions : Commande enregistrée, statut « en préparation » attribué.
+5. Gestion de la Préparation de la Commande
+Acteur(s) : Personnel de cuisine
+Description : La cuisine prépare la commande, marque la commande comme « préparation terminée » dans le système.
+Préconditions : Commande reçue de la part du système.
+Postconditions : Commande préparée, statut mis à jour.
+6. Gestion de la Livraison
+Acteur(s) : Préposé aux livraisons, Livreur
+Description : Le préposé aux livraisons confie la commande au livreur, le système met à jour le statut de la commande.
+Préconditions : Commande préparée.
+Postconditions : Commande en statut « en livraison », livreur assigné.
+7. Confirmation de Livraison
+Acteur(s) : Livreur
+Description : Après la livraison de la commande, le livreur met à jour le statut via son téléphone mobile.
+Préconditions : Commande livrée.
+Postconditions : Statut de la commande mis à jour en « commande complétée ».
+8. Gestion du Paiement au Comptoir
+Acteur(s) : Client, Préposé aux commandes
+Description : Le client paie la commande au comptoir, le préposé met à jour le statut de la commande.
+Préconditions : Commande prête à être remise au client.
+Postconditions : Commande payée et complétée.
