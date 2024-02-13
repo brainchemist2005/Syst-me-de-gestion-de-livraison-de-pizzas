@@ -28,7 +28,7 @@ UC4 --> OrderClerk
 UC8 --> OrderClerk
 
 OrderClerk --> UC5
- 
+
 KitchenStaff --> UC5
 
 UC5 --> OrderClerk
