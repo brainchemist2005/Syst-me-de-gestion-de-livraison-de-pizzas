@@ -1,0 +1,46 @@
+@startuml
+left to right direction
+
+actor Client as "Customer"
+actor "Préposé aux commandes" as OrderClerk
+actor "Personnel de cuisine" as KitchenStaff
+actor "Préposé aux livraisons" as DeliveryHandler
+actor Livreur as DeliveryDriver
+
+usecase "Prise de Commande Téléphonique" as UC1
+usecase "Prise de Commande Internet" as UC2
+usecase "Création de Nouveau Dossier Client" as UC3
+usecase "Prise de Commande au Comptoir" as UC4
+usecase "Gestion de la Préparation de la Commande" as UC5
+usecase "Gestion de la Livraison" as UC6
+usecase "Confirmation de Livraison" as UC7
+usecase "Gestion du Paiement au Comptoir" as UC8
+
+Client --> UC1
+Client --> UC2
+Client --> UC4
+Client --> UC8
+
+UC1 --> OrderClerk
+UC2--> OrderClerk
+OrderClerk --> UC3
+UC4 --> OrderClerk
+UC8 --> OrderClerk
+
+OrderClerk --> UC5
+ 
+KitchenStaff --> UC5
+
+UC5 --> OrderClerk
+
+OrderClerk --> DeliveryHandler
+
+DeliveryHandler --> UC6
+
+DeliveryDriver --> UC7
+
+UC5 --> KitchenStaff
+UC6 --> DeliveryHandler
+UC6 --> DeliveryDriver
+UC7 --> DeliveryDriver
+@enduml
