@@ -16,31 +16,26 @@ usecase "Gestion de la Livraison" as UC6
 usecase "Confirmation de Livraison" as UC7
 usecase "Gestion du Paiement au Comptoir" as UC8
 
-Client --> UC1
-Client --> UC2
-Client --> UC4
-Client --> UC8
+Client -- UC1
+Client -- UC2
+Client -- UC4
+Client -- UC8
 
-UC1 --> OrderClerk
-UC2--> OrderClerk
-OrderClerk --> UC3
-UC4 --> OrderClerk
-UC8 --> OrderClerk
+OrderClerk -- UC1
+OrderClerk -- UC2
+OrderClerk -- UC3
+OrderClerk -- UC4
+OrderClerk -- UC8
 
-OrderClerk --> UC5
+OrderClerk -- UC5
 
-KitchenStaff --> UC5
+KitchenStaff -- UC5
 
-UC5 --> OrderClerk
 
-OrderClerk --> DeliveryHandler
+DeliveryHandler -- UC6
 
-DeliveryHandler --> UC6
+DeliveryDriver -- UC7
 
-DeliveryDriver --> UC7
+DeliveryDriver -- UC6
 
-UC5 --> KitchenStaff
-UC6 --> DeliveryHandler
-UC6 --> DeliveryDriver
-UC7 --> DeliveryDriver
 @enduml
