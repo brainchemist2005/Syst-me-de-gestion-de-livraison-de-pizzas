@@ -1,0 +1,58 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor Client as "Customer"
+actor "Préposé aux commandes"  as OrderClerk
+actor "Personnel de cuisine" as KitchenStaff
+actor "Préposé aux livraisons" as DeliveryHandler
+actor Livreur as DeliveryDriver
+
+rectangle "Système de gestion de livraison de pizzas" {
+
+    usecase "Prise de Commande Téléphonique" as UC1
+    usecase "Prise de Commande Internet" as UC2
+    usecase "Création de Nouveau Dossier Client" as UC3
+    usecase "Prise de Commande au Comptoir" as UC4
+    usecase "Gestion de la Préparation de la Commande" as UC5
+    usecase "Gestion de la Livraison" as UC6
+    usecase "Finalisation de la Livraison" as UC7
+    usecase "Attribution des commandes au Comptoir" as UC8
+    usecase "Authentification du Client" as UC9
+    usecase "Paiment de la commande" as UC10
+    usecase "Mise à jour du Dossier Client" as UC11
+    usecase "Confirmation de la commande" as UC12
+    usecase "Affichage du dossier client" as UC13
+    usecase "Impression de la facture client" as UC14
+    usecase "Confirmation de la livraison" as UC15
+    usecase "Attribution des commandes aux livreurs" as UC16
+
+   Client -- UC1
+   Client -- UC2
+   Client -- UC4
+
+   (UC2) ..> (UC9) : include
+   (UC1) ..> (UC10) : include
+   (UC2) ..> (UC10) : include
+   (UC4) ..> (UC10) : include
+   (UC1) ..> (UC11) : extends
+   (UC2) ..> (UC11) : extends
+   (UC5) ..> (UC14) : extends
+   (UC1) ..> (UC13) : extends
+   (UC2) ..> (UC13) : extends
+   (UC1) ..> (UC12) : include
+   (UC7) ..> (UC15) : include
+   (UC6) ..> (UC16) : include
+
+   (UC13) -- OrderClerk
+   (UC11) -- OrderClerk
+   (UC12) -- OrderClerk
+
+   KitchenStaff -- UC5
+   DeliveryDriver -- UC7
+
+   DeliveryHandler -- (UC6)
+   DeliveryHandler -- (UC8)
+   }
+@enduml
