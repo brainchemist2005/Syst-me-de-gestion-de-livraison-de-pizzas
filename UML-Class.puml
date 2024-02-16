@@ -1,0 +1,60 @@
+@startuml
+
+left to right direction
+
+class Client {
+    - nom: String
+    - adresse: String
+    - numeroTelephone: String
+    - preferences: String[]
+}
+
+class Commande {
+    - numeroCommande: String
+    - dateHeure: Date
+    - status: String
+    - total: float
+    - detailsCommande: String
+}
+
+class Pizza {
+    - nom: String
+    - description: String
+    - prix: float
+}
+
+class PreposeLivraisons {
+    + assignerLivraison(commande: Commande, livreur: Livreur)
+    + marquerCommandeComplete(commande: Commande)
+}
+
+class PersonnelCuisine {
+    + preparerCommande(commande: Commande)
+    + marquerPreparationTerminee(commande: Commande)
+}
+
+class Livreur {
+    - numeroLivreur: String
+    + livrerCommande(commande: Commande)
+}
+
+class Facture {
+    - numeroFacture: String
+    - montant: float
+    - dateFacturation: Date
+}
+class Paiement {
+    - moyenPaiement: String
+    - montant: float
+    - datePaiement: Date
+}
+
+Client "1" -- "1..*" Commande
+(Client, Commande) .. Paiement
+Commande "1" -- "1" PersonnelCuisine
+Commande "1" -- "1" Facture
+Commande "1" -- "0..*" Pizza
+PreposeLivraisons "1" -- "0..*" Livreur
+Commande "1" -- "1" PreposeLivraisons
+
+@enduml
